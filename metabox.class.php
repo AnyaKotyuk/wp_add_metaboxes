@@ -59,7 +59,7 @@ class addMetaboxes{
                 $metabox['title'],
                 array($this, 'html'),
                 $this->screen,
-                'normal',
+                (!empty($metabox['context']))?$metabox['context']:'normal',
                 'default',
                 $args
             );
