@@ -76,7 +76,7 @@ class addMetaboxes{
 
         $type = $metabox['args']['type'];
         $metabox_value = get_post_meta($post->ID, $metabox['id'], true);
-        wp_nonce_field( MEMBERSHIP_PATH, 'matabox_nonce_field' );
+        wp_nonce_field( -1, 'matabox_nonce_field' );
         $content = '';
         if($type == 'checkbox'){
             $checked = ($metabox_value == 'on')?'checked':'';
@@ -104,7 +104,7 @@ class addMetaboxes{
      */
     public function save( $post_id ) {
 
-        if ( ! wp_verify_nonce( $_POST['matabox_nonce_field'], MEMBERSHIP_PATH ) )
+        if ( ! wp_verify_nonce( $_POST['matabox_nonce_field'], -1 ) )
             return $post_id;
 
         if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
